@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical" 
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent">
+    
+   <RadioGroup 
+      android:id="@+id/radiogroup1" 
+      android:layout_height="wrap_content"
+      android:layout_width="fill_parent">
+	
+   <RadioButton
+       android:id="@+id/radiotaxi"
+       android:text="Minibus taxi"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onRadioButtonClicked"
+   		/>
+   <RadioButton
+       android:id="@+id/radiominibus"
+       android:text="Minibus"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onRadioButtonClicked"
+   		/>
+   <RadioButton
+       android:id="@+id/radiomotorcar"
+       android:text="Motorcar"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onRadioButtonClicked"
+   		/>
+   <RadioButton
+       android:id="@+id/radiobus"
+       android:text="Bus"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onRadioButtonClicked"
+   		/>
+   <RadioButton
+       android:id="@+id/radiobakkie"
+       android:text="Bakkie"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onRadioButtonClicked"
+   		/>
+   
+    <RadioButton
+       android:id="@+id/radiomotorcycle"
+       android:text="Motorcycle"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onRadioButtonClicked"
+   		/>
+    
+   <RadioButton
+       android:id="@+id/radiotruck"
+       android:text="Truck"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onRadioButtonClicked"
+   		/>
+   <RadioButton
+       android:id="@+id/radioother"
+       android:text="Other"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:onClick="onRadioButtonClicked"
+   		/>
+   
+   </RadioGroup>
+   
+   	<EditText
+   	    android:id="@+id/veh_desc"
+   	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:hint="Vehicle description"
+   	    />
+   	
+   	<EditText
+   	    android:id="@+id/veh_registration"
+   	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:hint="Registration number"
+	    android:singleLine="true"
+   	    />
+   	
+   	<Button
+   	    android:id="@+id/veh_next"
+   	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:text="Submit incident"
+	    android:onClick="submitIncident"
+   	    />
+</LinearLayout>

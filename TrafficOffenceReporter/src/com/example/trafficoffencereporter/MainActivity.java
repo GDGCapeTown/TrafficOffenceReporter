@@ -12,6 +12,11 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -70,14 +75,13 @@ public class MainActivity extends Activity {
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 		
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+		
 	}
 	
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 	        if (resultCode == RESULT_OK) {
-	            // Image captured and saved to fileUri specified in the Intent
-	            Toast.makeText(this, "Image saved to:\n" +
-	                     data.getData(), Toast.LENGTH_LONG).show();
+
 	        } else if (resultCode == RESULT_CANCELED) {
 	            // User cancelled the image capture
 	        } else {
@@ -96,6 +100,37 @@ public class MainActivity extends Activity {
 	            // Video capture failed, advise user
 	        }
 	    }
+	    
+        final ListView listview = (ListView) findViewById(R.id.listView1);
+	    String[] values = new String[] { 
+	    		"Illegal parking",
+	    		"Inconsiderate (legal) parking",
+	    		"Inconsiderate driving",
+	    		"Inconsiderate driving (public transport)",
+	    		"Reckless driving",
+	    		"Reckless driving (public transport)",
+	    		"Pedestrians",
+	    		"Other",
+	    };
+	    
+	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, values);
+	    listview.setAdapter(adapter);
+	    
+	    listview.setOnItemClickListener(new OnItemClickListener() {
+	        public void onItemClick(AdapterView<?> parent, View view,
+	                int position, long id) {
+	        	Object o = listview.getItemAtPosition(position);
+	        	String str = o.toString();//As you are using Default String Adapter
+	       
+	        	Intent i = new Intent(MainActivity.this, ReportActivity.class);
+	        	i.putExtra("OffenceType", str);
+	        	//Log.d("DEBUG", "picture url is: " + fileUri);
+	        	i.putExtra("imageURL", fileUri.toString());
+	        	
+	        	startActivity(i);
+	       }
+	    });
 	}
 
 	@Override
